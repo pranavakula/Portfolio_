@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { initialPortfolioData } from './data/portfolioData';
-import { PortfolioData } from './types';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -13,18 +12,9 @@ import { Milestones } from './components/Milestones';
 import { Philosophy } from './components/Philosophy';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { DataCustomizerDrawer } from './components/DataCustomizerDrawer';
 
 export default function App() {
-  const [portfolioData, setPortfolioData] = useState<PortfolioData>(initialPortfolioData);
-
-  const handleUpdateData = (updated: PortfolioData) => {
-    setPortfolioData(updated);
-  };
-
-  const handleResetData = () => {
-    setPortfolioData(initialPortfolioData);
-  };
+  const portfolioData = initialPortfolioData;
 
   return (
     <div className="min-h-screen bg-[#F5F6F2] text-[#111111] relative selection:bg-[#2E8B72] selection:text-white">
@@ -66,12 +56,6 @@ export default function App() {
       {/* 11 — FOOTER */}
       <Footer personal={portfolioData.personal} />
 
-      {/* Interactive Live Data Customizer & Placeholder Assistant */}
-      <DataCustomizerDrawer
-        portfolioData={portfolioData}
-        onUpdateData={handleUpdateData}
-        onResetData={handleResetData}
-      />
     </div>
   );
 }
